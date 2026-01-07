@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Transformation Proposal - Qari Shopping Mall</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        
+        /* Cover Page */
+        .cover {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px;
+            position: relative;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cover::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(236,72,153,0.2);
+            border: 1px solid rgba(236,72,153,0.5);
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cover-title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cover-subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 60px;
+            color: #93c5fd;
+        }
+        
+        .cover-client-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            margin-top: 40px;
+        }
+        
+        .cover-client-label {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .cover-client-name {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cover-footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cover-date {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+        
+        .cover-brand {
+            text-align: right;
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .brand-tagline {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 5px;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 60px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .page-header {
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #ec4899, #3b82f6) 1;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a1a2e 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 5px solid #ec4899;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #ec4899 0%, #3b82f6 100%);
+        }
+        
+        .section-content {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        
+        /* Deliverables Grid */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .deliverable-card {
+            background: white;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            padding: 30px;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .deliverable-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ec4899, #3b82f6);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .deliverable-card:hover::before {
+            opacity: 1;
+        }
+        
+        .deliverable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(236,72,153,0.2);
+        }
+        
+        .deliverable-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .deliverable-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        .deliverable-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .deliverable-item {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .deliverable-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            border-radius: 50%;
+        }
+        
+        .deliverable-item:after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 24px;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        /* Investment Table */
+        .investment-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .investment-table thead {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+        
+        .investment-table th {
+            padding: 22px 25px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .investment-table td {
+            padding: 22px 25px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+            background: white;
+        }
+        
+        .investment-table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .investment-table tbody tr:hover {
+            background: #fdf4f9 !important;
+            transform: scale(1.01);
+        }
+        
+        .investment-table .total-row {
+            background: linear-gradient(135deg, #fdf4f9 0%, #eff6ff 100%);
+            font-weight: 800;
+            font-size: 18px;
+        }
+        
+        .investment-table .total-row td {
+            border-bottom: none;
+            color: #1a1a2e;
+        }
+        
+        .amount {
+            text-align: right;
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 16px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Note Box */
+        .note-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(245,158,11,0.2);
+        }
+        
+        .note-box strong {
+            color: #92400e;
+            font-weight: 800;
+        }
+        
+        /* Benefits List */
+        .benefits-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .benefit-item {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ec4899 0%, #3b82f6 100%);
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(236,72,153,0.2);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+        
+        .benefit-description {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            right: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            font-size: 12px;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-brand {
+            font-weight: 700;
+            background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <div class="cover-content">
+            <div class="cover-badge">Strategic Proposal</div>
+            <div class="cover-title">Next-Generation<br>E-Commerce Excellence</div>
+            <div class="cover-subtitle">A Complete Digital Transformation Blueprint</div>
+            
+            <div class="cover-client-box">
+                <div class="cover-client-label">Exclusively Prepared For</div>
+                <div class="cover-client-name">Qari Shopping Mall</div>
+            </div>
+        </div>
+        
+        <div class="cover-footer">
+            <div class="cover-date">January 2026</div>
+            <div class="cover-brand">
+                <div class="brand-name">YASIR AHMED GHAURI</div>
+                <div class="brand-tagline">Digital Architect & E-Commerce Strategist</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 2: Overview & Deliverables -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-title">Strategic Vision</div>
+            <div class="page-number">01</div>
+        </div>
+        
+        <div class="section">
+            <div class="section-content">
+                This proposal outlines a comprehensive digital transformation for <strong>Qari Shopping Mall</strong>. We combine cutting-edge custom backend architecture with world-class Shopify storefront excellence to deliver seamless operations, compelling brand presence, and exponential growth potential.
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Core Deliverables Package</div>
+            
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <div class="deliverable-header">
+                        <div class="deliverable-icon">A</div>
+                        <div class="deliverable-title">Backend & Infrastructure Excellence</div>
+                    </div>
+                    <div class="deliverable-item">Bespoke Inventory Management System engineered specifically for Qari Shopping Mall's unique workflow, tracking stock levels, SKUs, and supplier relationships with precision</div>
+                    <div class="deliverable-item">Enterprise-Grade Hosting Infrastructure with military-grade security, ensuring 99.9% uptime and lightning-fast performance around the clock</div>
+                    <div class="deliverable-item">Complete Shopify Ecosystem Deployment including strategic domain architecture, SSL certification, and first-month optimization for maximum conversions</div>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-header">
+                        <div class="deliverable-icon">B</div>
+                        <div class="deliverable-title">Design & Creative Mastery</div>
+                    </div>
+                    <div class="deliverable-item">Premium Custom Storefront Design featuring a mobile-first responsive theme that captures your brand essence and converts visitors into loyal customers</div>
+                    <div class="deliverable-item">Professional Brand Asset Suite including stunning banners, conversion-optimized promotional graphics, and cohesive UI elements that establish market authority</div>
+                    <div class="deliverable-item">Advanced Product Asset Optimization with professional-grade editing, intelligent compression, and format optimization for sub-2-second loading times without quality compromise</div>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-header">
+                        <div class="deliverable-icon">C</div>
+                        <div class="deliverable-title">Knowledge Transfer & Team Empowerment</div>
+                    </div>
+                    <div class="deliverable-item">Strategic Workflow Consulting delivering personalized guidance on establishing professional in-house product photography and intelligent inventory tagging systems</div>
+                    <div class="deliverable-item">Comprehensive Admin Training with hands-on walkthrough sessions covering every aspect of your Shopify and Inventory Management dashboards</div>
+                    <div class="deliverable-item">Management Excellence Program including advanced training on order fulfillment, customer data analytics, and efficient bulk product upload workflows</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Qari Shopping Mall · Digital Transformation Proposal</span>
+            <span class="footer-brand">Yasir Ahmed Ghauri</span>
+        </div>
+    </div>
+    
+    <!-- Page 3: Investment & Benefits -->
+    <div class="page content-page">
+        <div class="page-header">
+            <div class="page-title">Investment Blueprint</div>
+            <div class="page-number">02</div>
+        </div>
+        
+        <div class="section">
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>Service Component</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Investment (PKR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Complete Development & Premium Design Package</td>
+                        <td><span class="status-badge">INCLUDED</span></td>
+                        <td class="amount">60,000</td>
+                    </tr>
+                    <tr>
+                        <td>Domain Registration, Enterprise Hosting & Shopify Setup</td>
+                        <td><span class="status-badge">INCLUDED</span></td>
+                        <td class="amount">120,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2">Total Project Investment</td>
+                        <td class="amount">180,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note-box">
+                <strong>Ongoing Excellence:</strong> A monthly maintenance investment of PKR 20,000 ensures continuous security updates, performance optimization, technical support, and proactive monitoring to keep your platform running at peak performance.
+            </div>
+        </div>
+        
+        <div class="section" style="margin-top: 50px;">
+            <div class="section-title">The Yasir Ahmed Ghauri Advantage</div>
+            <div class="section-content" style="margin-bottom: 30px;">
+                As a specialized fusion of Software Architecture and Conversion Science, I don't just build websites—I architect digital revenue engines. While competitors offer cookie-cutter templates, you receive:
+            </div>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">Intelligent Automation</div>
+                    <div class="benefit-description">Eliminate tedious manual data entry and human error through custom-engineered software that seamlessly integrates with your existing operations, saving countless hours and reducing costly mistakes.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-title">Performance Excellence</div>
+                    <div class="benefit-description">Military-grade optimized code and professionally compressed assets deliver blazing-fast load times, superior Google rankings, and exceptional customer experiences that directly translate to higher conversion rates.</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-title">Lifetime Partnership</div>
+                    <div class="benefit-description">Your success extends far beyond launch day. Receive continuous guidance, proactive technical excellence, and strategic consulting to ensure your platform evolves with your growing business needs.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Qari Shopping Mall · Digital Transformation Proposal</span>
+            <span class="footer-brand">Yasir Ahmed Ghauri</span>
+        </div>
+    </div>
+</body>
+</html>
